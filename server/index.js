@@ -16,18 +16,16 @@ const pgClient = new Pool({
   host: keys.pgHost,
   database: keys.pgDatabase,
   password: keys.pgPassword,
-  port: keys.pgPort
+  port: keys.pgPort,
 });
 
-pgClient.on("connect", client => {
-  client
-    .query("CREATE TABLE IF NOT EXISTS values (number INT)")
-    .catch(err => console.log("PG ERROR", err));
+pgClient.on("connect", (client) => {
+  client.query("CREATE TABLE IF NOT EXISTS values (number INT)").catch((err) => console.log("PG ERROR", err));
 });
 
 //Express route definitions
 app.get("/", (req, res) => {
-  res.send("Hi");
+  res.send(" ok man okkk..");
 });
 
 // get the values
@@ -46,6 +44,6 @@ app.post("/values", async (req, res) => {
   res.send({ working: true });
 });
 
-app.listen(5000, err => {
+app.listen(5000, (err) => {
   console.log("Listening");
 });
