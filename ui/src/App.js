@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload ok.
+          hahah <code>src/App.js</code> and save to reload ok.
         </p>
         <a className="App-link" href="http://localhost/api/" target="_blank" rel="noopener noreferrer">
           Learn React
