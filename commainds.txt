@@ -1,0 +1,9 @@
+docker exec skeleton-nginx-1  nginx -s reload
+
+//fresh build
+docker-compose -f prod.yml up --build
+docker-compose -f dev.yml up --build
+
+//minor build
+docker-compose -f prod.yml up
+docker-compose -f dev.yml up

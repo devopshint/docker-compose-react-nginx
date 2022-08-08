@@ -10,7 +10,7 @@ services:
       - ui
     restart: always
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/dev.conf:/etc/nginx/conf.d/default.conf
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
