@@ -12,12 +12,10 @@ COPY ./admin/ .
 
 FROM ui as ui1
 WORKDIR /app
-ADD "https://tradingtoolx.com/random.php" skipcache
 RUN npm run build
 
 FROM admin as admin1
 WORKDIR /admin
-ADD "https://tradingtoolx.com/random.php" skipcache
 RUN npm run build
 
 
