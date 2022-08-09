@@ -25,7 +25,15 @@ pgClient.on("connect", (client) => {
 
 //Express route definitions
 app.get("/", (req, res) => {
-  res.send(" ok man okkk..");
+  res.send(" this is homepage");
+});
+
+app.get("/dev", (req, res) => {
+  res.send(" this is devsss");
+});
+
+app.get("/prod", (req, res) => {
+  res.send(" this is prod");
 });
 
 // get the values
@@ -44,6 +52,6 @@ app.post("/values", async (req, res) => {
   res.send({ working: true });
 });
 
-app.listen(5000, (err) => {
+app.listen(5001, (err) => {
   console.log("Listening");
 });

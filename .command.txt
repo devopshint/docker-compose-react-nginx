@@ -7,3 +7,6 @@ docker-compose -f dev.yml up --build
 //minor build
 docker-compose -f prod.yml up
 docker-compose -f dev.yml up
+
+
+docker system prune --all --force
