@@ -10,3 +10,11 @@ docker-compose -f dev.yml up
 
 
 docker system prune --all --force
+
+docker-compose down
+docker volume rm skeleton_static
+docker-compose up --build
+
+
+docker-compose build --no-cache
+

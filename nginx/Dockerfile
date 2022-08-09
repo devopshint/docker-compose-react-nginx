@@ -1,1 +1,2 @@
-FROM nginx as engine
+FROM nginx
+EXPOSE 3000 5001 80

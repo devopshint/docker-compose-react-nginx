@@ -1,1 +1,1 @@
-FROM nginx as engine
+FROM nginx
