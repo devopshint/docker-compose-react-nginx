@@ -1,0 +1,23 @@
+docker exec skeleton-nginx-1  nginx -s reload
+
+//fresh build
+docker-compose -f prod.yml up --build
+docker-compose -f dev.yml up --build
+
+//minor build
+docker-compose -f prod.yml up
+docker-compose -f dev.yml up
+
+
+docker system prune --all --force
+
+docker-compose down
+docker volume rm skeleton_static
+docker-compose up --build
+
+
+docker-compose build --no-cache
+
+
+
+ADD "https://tradingtoolx.com/random.php" skipcache

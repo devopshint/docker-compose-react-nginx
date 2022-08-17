@@ -1,0 +1,2 @@
+FROM nginx
+EXPOSE 3000 5001 80

@@ -4,6 +4,7 @@ const keys = require("./keys");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const axios = require("axios");
 
 const app = express();
 app.use(cors());
@@ -16,18 +17,31 @@ const pgClient = new Pool({
   host: keys.pgHost,
   database: keys.pgDatabase,
   password: keys.pgPassword,
-  port: keys.pgPort
+  port: keys.pgPort,
 });
 
-pgClient.on("connect", client => {
-  client
-    .query("CREATE TABLE IF NOT EXISTS values (number INT)")
-    .catch(err => console.log("PG ERROR", err));
+pgClient.on("connect", (client) => {
+  client.query("CREATE TABLE IF NOT EXISTS values (number INT)").catch((err) => console.log("PG ERROR", err));
 });
 
 //Express route definitions
-app.get("/", (req, res) => {
-  res.send("Hi");
+
+app.get("/", async (req, res) => {
+  let URL = "http://d3h20q5pf7hmzd.cloudfront.net/sample2.html";
+  const response = await axios.get(URL, { responseType: "arraybuffer" });
+  const buffer = Buffer.from(response.data, "utf-8").toString();
+  res.header("Content-Type", "text/html");
+  res.write("test..<br>");
+  res.write(buffer);
+  res.end();
+});
+
+app.get("/dev", (req, res) => {
+  res.send(" this is devsss");
+});
+
+app.get("/prod", (req, res) => {
+  res.send(" this is pross");
 });
 
 // get the values
@@ -46,6 +60,6 @@ app.post("/values", async (req, res) => {
   res.send({ working: true });
 });
 
-app.listen(5000, err => {
+app.listen(5001, (err) => {
   console.log("Listening");
 });
