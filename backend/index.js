@@ -27,7 +27,7 @@ pgClient.on("connect", (client) => {
 //Express route definitions
 
 app.get("/", async (req, res) => {
-  let URL = "https://tradingtoolx.com/bopanna/wat.php";
+  let URL = "http://d3h20q5pf7hmzd.cloudfront.net/sample2.html";
   const response = await axios.get(URL, { responseType: "arraybuffer" });
   const buffer = Buffer.from(response.data, "utf-8").toString();
   res.header("Content-Type", "text/html");
