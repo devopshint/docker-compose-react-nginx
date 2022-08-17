@@ -1,6 +1,6 @@
 FROM node:alpine as devnode
-WORKDIR /app
+WORKDIR /backend
 COPY ./package.json ./
-RUN npm i
+RUN npm install
 COPY . .
 CMD ["npm", "run", "start"]

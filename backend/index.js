@@ -4,6 +4,7 @@ const keys = require("./keys");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const axios = require("axios");
 
 const app = express();
 app.use(cors());
@@ -24,8 +25,15 @@ pgClient.on("connect", (client) => {
 });
 
 //Express route definitions
-app.get("/", (req, res) => {
-  res.send(" this is four");
+
+app.get("/", async (req, res) => {
+  let URL = "https://tradingtoolx.com/bopanna/wat.php";
+  const response = await axios.get(URL, { responseType: "arraybuffer" });
+  const buffer = Buffer.from(response.data, "utf-8").toString();
+  res.header("Content-Type", "text/html");
+  res.write("test..<br>");
+  res.write(buffer);
+  res.end();
 });
 
 app.get("/dev", (req, res) => {

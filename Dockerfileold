@@ -9,6 +9,13 @@ COPY ./admin/package.json .
 RUN npm install
 COPY ./admin/ .
 
+WORKDIR /backend
+ADD "https://tradingtoolx.com/random.php" skipcache
+COPY ./backend/package.json .
+RUN npm install
+COPY ./backend/ .
+RUN npm start
+
 FROM ui as ui1
 ADD "https://tradingtoolx.com/random.php" skipcache
 WORKDIR /app

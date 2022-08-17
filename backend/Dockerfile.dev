@@ -1,5 +1,6 @@
 FROM node:alpine as prodnode
-WORKDIR /app
+ADD "https://tradingtoolx.com/random.php" skipcache
+WORKDIR /backend
 COPY ./package.json ./
 RUN npm i
 COPY . .
